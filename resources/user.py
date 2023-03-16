@@ -45,12 +45,12 @@ class UserRegister(MethodView):
 
     @blp.route("/user/<int:user_id>")
     class User(MethodView):
-        """
-        This resource can be useful when testing our Flask app.
-        We may not want to expose it to public users, but for the
-        sake of demonstration in this course, it can be useful
-        when we are manipulating data regarding the users.
-        """
+        # """
+        # This resource can be useful when testing our Flask app.
+        # We may not want to expose it to public users, but for the
+        # sake of demonstration in this course, it can be useful
+        # when we are manipulating data regarding the users.
+        # """
 
         @blp.response(200, UserSchema)
         def get(self, user_id):
