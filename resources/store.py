@@ -25,12 +25,6 @@ class Store(MethodView):
 
     @blp.arguments(StoreUpdateSchema)
     def put(self, store_data, store_id):
-        # store_data = request.get_json()
-        # if "name" not in store_data:
-        #     abort(
-        #         400,
-        #         message = "Bad request! Ensure 'name' is included in the request"
-        #     )
         store = StoreModel.query.get(store_id)
         if store:
             store.name = store_data["name"]
@@ -52,12 +46,6 @@ class Store(MethodView):
     @blp.arguments(StoreSchema)
     @blp.response(201, StoreSchema)
     def post(self, store_data):
-            # store_data = request.get_json()
-            # if "name" not in store_data:
-            #     abort(
-            #         400,
-            #         message = "Bad request! Ensure 'name' is included in the request."
-            #     )
         store = StoreModel(**store_data)
 
         try:

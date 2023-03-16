@@ -32,12 +32,6 @@ class Item(MethodView):
     @blp.arguments(ItemUpdateSchema)
     @blp.response(200, ItemSchema)
     def put(self, item_data, item_id):
-        # item_data = request.get_json()
-        # if "price" not in item_data or "name" not in item_data:
-        #     abort(
-        #         400,
-        #         message = "Bad request! Ensure 'price', and 'name' are included in the request"
-        #     )
         item = ItemModel.query.get(item_id)
         if item:
             item.price = item_data["price"]
@@ -61,16 +55,6 @@ class Item(MethodView):
     @blp.arguments(ItemSchema)
     @blp.response(201, ItemSchema)
     def post(self, item_data):
-        # item_data = request.get_json()
-        # if (
-        #     "price" not in item_data
-        #     or "store_id" not in item_data
-        #     or "name" not in item_data
-        # ):
-        #     abort(
-        #         400,
-        #         message = "Bad request! Ensure 'price', 'store_id', and 'name' are included in the request."
-        #         )
         item = ItemModel(**item_data)
 
         try:
