@@ -11,13 +11,13 @@ blp = Blueprint("Items", __name__, description="Operations on Items.")
 
 @blp.route("/item/<int:item_id>")
 class Item(MethodView):
-    @jwt_required
+    @jwt_required()
     @blp.response(200, ItemSchema)
     def get(self, item_id):
         item = ItemModel.query.get_or_404(item_id)
         return item
 
-    @jwt_required
+    @jwt_required()
     def delete(self, item_id):
         jwt = get_jwt()
         if not jwt.get("is_admin"):
@@ -46,7 +46,7 @@ class Item(MethodView):
 
 @blp.route("/item")
 class Item(MethodView):
-    @jwt_required
+    @jwt_required()
     @blp.response(200, ItemSchema(many = True))
     def get(self):
         return ItemModel.query.all()
