@@ -1,14 +1,15 @@
 import os
 import secrets
+# import redis
 
 from flask import Flask, jsonify
 from flask_smorest import Api
 from flask_jwt_extended import JWTManager
 from dotenv import load_dotenv
 
-
+# from rq import Queue
 from db import db
-import models
+# import models
 from flask_migrate import Migrate
 
 from resources.store import blp as StoreBlueprint
@@ -100,7 +101,6 @@ def create_app(db_url=None):
             401,
         )
        
-
     api.register_blueprint(StoreBlueprint)
     api.register_blueprint(ItemBlueprint)
     api.register_blueprint(TagBlueprint)
